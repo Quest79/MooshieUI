@@ -320,10 +320,8 @@ pub fn run() {
                     });
                 }
 
-                // Open the default browser
-                let url = format!("http://127.0.0.1:{}", actual_port);
-                log::info!("Opening browser at {}", url);
-                let _ = open::that(&url);
+                // Don't open the default browser: the UI is used from Claude's browser pane
+                log::info!("Browser UI ready at http://127.0.0.1:{} (not opening a browser)", actual_port);
             } else {
                 // Normal app mode — configure WebView
                 #[cfg(target_os = "linux")]
